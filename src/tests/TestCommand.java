@@ -15,7 +15,13 @@ public class TestCommand {
 		Accountant accountant = new Accountant();
 		
 		accountant.setCommand(alertCommand);
-		accountant.takeAction();
+		try {
+			accountant.takeAction();
+			System.out.println("Command test passed");
+		}
+		catch(Exception e) {
+			System.out.println("Command Test failed");
+		}
 	}
 
 }

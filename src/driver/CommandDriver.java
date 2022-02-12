@@ -1,25 +1,27 @@
 package driver;
 import command.*;
+import state.*;
 public class CommandDriver {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Alerts alerts = new Alerts();
-		Invoice invoice = new Invoice();
-		Notification notification = new Notification();
-		Payments payments = new Payments();
-		Reports reports = new Reports();
+
 		
-		AlertSendCommand alertCommand = new AlertSendCommand(alerts);
-		AlertCancelCommand alertsCancelCommand = new AlertCancelCommand(alerts);
+		Accountant accountant =  new Accountant();
 		
-		Accountant accountant = new Accountant();
+		OtrMachine otrMachine = new OtrMachine(accountant);
 		
-		accountant.setCommand(alertCommand);
-		accountant.takeAction();
+
+		System.out.println();
+		otrMachine.sendAlerts();
+		System.out.println();
+		otrMachine.sendNotifications();
+		System.out.println();
+		otrMachine.sendInvoices();
+		System.out.println();
+		otrMachine.receivePayments();
+		System.out.println();
+		otrMachine.generateReports();
 		
-		accountant.setCommand(alertsCancelCommand);
-		accountant.takeAction();
 	}
 
 }
